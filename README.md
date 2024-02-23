@@ -1,2 +1,2 @@
 # MyLifeTracker
-App for tracking daily activities such as Workouts, Routines, Work and Studying.
+App for Workouts, Nutrition and Recipes.
