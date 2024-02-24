@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
+from config import DevelopmentConfig
 
 # Initialize MongoDB
 db = MongoEngine()
@@ -8,7 +9,9 @@ def create_app(config_name='development'):
     app = Flask(__name__)
 
     # Load configuration
-    app.config.from_object(f'config.{config_name}')
+    app.config.from_object({
+        'development' : DevelopmentConfig
+    }[config_name])
 
     # Initialize MongoDB
     db.init_app(app)
