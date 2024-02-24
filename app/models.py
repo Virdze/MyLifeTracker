@@ -14,5 +14,7 @@ class Workout(Document):
     date = DateTimeField(required=True)
 
 class Recipe(Document):
-    title = StringField()
-    ingredients = StringField()
+    title = StringField(required=True)
+    description = StringField(required=True)
+    cooking_time = StringField(required=True)
+    serving_size = IntField(required=True)
