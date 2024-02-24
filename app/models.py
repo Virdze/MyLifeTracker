@@ -1,10 +1,13 @@
-from mongoengine import Document, StringField, IntField
+from mongoengine import Document, StringField, IntField, FloatField, DateTimeField, ListField, ReferenceField
+
+
 
 class Workout(Document):
-    exercise_name = StringField()
-    # Define other fields
+    workout_name = StringField(required=True)
+    duration = StringField(required=True)
+    description = StringField()
+    date = DateTimeField(required=True)
 
 class Recipe(Document):
     title = StringField()
     ingredients = StringField()
-    # Define other fields
