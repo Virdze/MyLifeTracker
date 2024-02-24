@@ -13,8 +13,12 @@ class Workout(Document):
     description = StringField()
     date = DateTimeField(required=True)
 
+class Ingredient(Document):
+    name = StringField(required=True)
+
 class Recipe(Document):
     title = StringField(required=True)
     description = StringField(required=True)
     cooking_time = StringField(required=True)
     serving_size = IntField(required=True)
+    ingredients = ListField(ReferenceField(Ingredient))
