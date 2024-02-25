@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template
-from .models import Recipe
+from .models import Recipe, Exercise
 from .scraper import scrape_recipes
 import requests
 
@@ -25,6 +25,7 @@ def callExercisesAPI():
         response = requests.get(api_url,headers=headers, params=querystring)
 
         if response.status_code == 200:
+            Exercise.save_exercises(Exercise,response.json())
             return jsonify(response.json())
         else:
             return jsonify({

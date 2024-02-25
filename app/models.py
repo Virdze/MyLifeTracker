@@ -2,15 +2,29 @@ from mongoengine import Document, StringField, IntField, FloatField, DateTimeFie
 
 class Exercise(Document):
     name = StringField(required=True)
-    description = StringField()
-    sets = IntField(required=True)
-    reps = IntField(required=True)
+    instructions = ListField(StringField(required=True))
+    bodyPart = StringField(required=True)
+    target = StringField(required=True)
+    equipment = StringField(required=True)
+    gifURL = StringField(required=True)
+
+    def save_exercises(self, exercises_json):
+        for exercise in exercises_json:
+            exercise = Exercise(
+                name=exercise['name'],
+                instructions=exercise['instructions'],
+                bodyPart=exercise['bodyPart'],
+                target=exercise['target'],
+                equipment=exercise['equipment'],
+                gifURL=exercise['gifUrl']
+            )
+            exercise.save()
+        return True
 
 class Workout(Document):
     workout_name = StringField(required=True)
     duration = StringField(required=True)
     exercises = ListField(ReferenceField(Exercise))
-    description = StringField()
     date = DateTimeField(required=True)
 
 class MacroNutrients(Document):
