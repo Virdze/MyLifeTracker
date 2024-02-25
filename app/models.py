@@ -20,6 +20,9 @@ class Exercise(Document):
             )
             exercise.save()
         return True
+    
+    def get_exercises(self):
+        return Exercise.objects()
 
 class Workout(Document):
     workout_name = StringField(required=True)

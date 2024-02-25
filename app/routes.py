@@ -14,7 +14,7 @@ def index():
 def callExercisesAPI():
     api_url = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back"
 
-    querystring = {"limit":"10"}
+    querystring = {"limit":"100"}
 
     headers = {
 	    "X-RapidAPI-Key": "c8f7c942c6msh71c58f5865ee5c7p188819jsn6bb86afec4f2",
@@ -35,7 +35,9 @@ def callExercisesAPI():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'An error occurred: {}'.format(e)}), 500    
     
-
+@main.route("/getExercises", methods=["GET"])
+def get_exercises():
+    return jsonify(Exercise.get_exercises(Exercise))
 
 
 # @main.route('/recipes', methods=['GET'])
