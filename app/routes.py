@@ -1,12 +1,40 @@
 from flask import Blueprint, jsonify, render_template
 from .models import Recipe
 from .scraper import scrape_recipes
+import requests
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
     return render_template('index.html')
+
+
+@main.route('/callExercisesAPI', methods=['GET'])
+def callExercisesAPI():
+    api_url = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back"
+
+    querystring = {"limit":"10"}
+
+    headers = {
+	    "X-RapidAPI-Key": "c8f7c942c6msh71c58f5865ee5c7p188819jsn6bb86afec4f2",
+	    "X-RapidAPI-Host": "exercisedb.p.rapidapi.com"
+    }
+
+    try:
+        response = requests.get(api_url,headers=headers, params=querystring)
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({
+                'errorCode': response.status_code,
+                'errorMessage': 'Error calling API' 
+            })
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'An error occurred: {}'.format(e)}), 500    
+    
+
 
 
 # @main.route('/recipes', methods=['GET'])
