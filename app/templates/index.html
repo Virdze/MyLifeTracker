@@ -1,17 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Main Menu</title>
-      <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="left-tab"> 
-            <a href="/callExercisesAPI">Call Exercises API</a></li>
-            <div>
-                <a href="/getExercises">Get Exercises</a></li>
-            </div>
-        </div>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Sidebar Menu</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+	/* Custom Styles */
+	.sidebar {
+	  position: fixed;
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  z-index: 100; /* Adjust as needed */
+	  padding: 48px 0; /* Adjust padding as needed */
+	  background-color: #333; /* Dark grey background */
+	  color: #fff; /* White text color */
+	}
+	.sidebar .nav-link {
+	  color: #61C791; /* Usable green */
+	}
+	.content {
+	  margin-left: 250px; /* Adjust margin to match sidebar width */
+	  padding: 20px;
+	  color: #fff; /* White text color */
+	}
+	.user-icon {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+    .user-icon img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+	body {
+		background-color: #000;
+	}
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+	<!-- Sidebar -->
+	<nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+		<div class="sidebar-sticky">
+		  <ul class="nav flex-column">
+			<li class="nav-item">
+			  <a class="nav-link active" href="#home">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#dashboard">Dashboard</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#workouts">Workouts</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#recipes">Recipes</a>
+			</li>
+		  </ul>
+		</div>
+		<div class="user-icon">
+		  <img src="user-icon.png" alt="User Icon">
+		  <span>John Doe</span>
+		</div>
+	  </nav>
+
+	<!-- Content -->
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
+	  <div id="home" style="display: none;">
+		<!-- Home Content -->
+		<h2>Home</h2>
+		<p>Welcome to the Home page.</p>
+	  </div>
+	  <div id="dashboard" style="display: none;">
+		<!-- Dashboard Content -->
+		<h2>Dashboard</h2>
+		<p>This is your Dashboard.</p>
+	  </div>
+	  <div id="workouts" style="display: none;">
+		<!-- Workouts Content -->
+		<h2>Workouts</h2>
+		<p>Your Workouts will be shown here.</p>
+	  </div>
+	  <div id="recipes" style="display: none;">
+		<!-- Recipes Content -->
+		<h2>Recipes</h2>
+		<p>Check out some delicious Recipes.</p>
+	  </div>
+	  <div id="user" style="display: none;">
+        <!-- User Content -->
+        <h2>User</h2>
+        <p>User settings and profile information will be displayed here.</p>
+      </div>
+	</main>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../static/js/index.js"></script>
+
+</body>
 </html>
