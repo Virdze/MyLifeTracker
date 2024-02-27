@@ -39,6 +39,13 @@ def callExercisesAPI():
 def get_exercises():
     return jsonify(Exercise.get_exercises(Exercise))
 
+@main.route('/workouts/get_gif_url', methods=["GET"])
+def get_gif_url():
+    url = Exercise.get_gif_url()
+    if url:
+        return jsonify({'gifURL' : url})
+    else :
+        return jsonify({'error' : 'Exercise not found'})
 
 # @main.route('/recipes', methods=['GET'])
 # def get_recipes():

@@ -6,40 +6,7 @@
   <title>Bootstrap Sidebar Menu</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-	/* Custom Styles */
-	.sidebar {
-	  position: fixed;
-	  top: 0;
-	  bottom: 0;
-	  left: 0;
-	  z-index: 100; /* Adjust as needed */
-	  padding: 48px 0; /* Adjust padding as needed */
-	  background-color: #333; /* Dark grey background */
-	  color: #fff; /* White text color */
-	}
-	.sidebar .nav-link {
-	  color: #61C791; /* Usable green */
-	}
-	.content {
-	  margin-left: 250px; /* Adjust margin to match sidebar width */
-	  padding: 20px;
-	  color: #fff; /* White text color */
-	}
-	.user-icon {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-    }
-    .user-icon img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-	body {
-		background-color: #000;
-	}
-  </style>
+  <link href="../static/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -85,6 +52,9 @@
 		<!-- Workouts Content -->
 		<h2>Workouts</h2>
 		<p>Your Workouts will be shown here.</p>
+		<div class="centered-container">
+			<img id="workout-gif" src="" alt="GIF" style="max-width: 100%;">
+		</div>
 	  </div>
 	  <div id="recipes" style="display: none;">
 		<!-- Recipes Content -->
