@@ -35,7 +35,7 @@ def callExercisesAPI():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'An error occurred: {}'.format(e)}), 500    
     
-@main.route("/getExercises", methods=["GET"])
+@main.get("/workouts/getExercises")
 def get_exercises():
     return jsonify(Exercise.get_exercises(Exercise))
 
