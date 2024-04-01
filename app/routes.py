@@ -35,10 +35,17 @@ def callExercisesAPI():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'An error occurred: {}'.format(e)}), 500    
     
-@main.route("/getExercises", methods=["GET"])
+@main.get("/workouts/getExercises")
 def get_exercises():
     return jsonify(Exercise.get_exercises(Exercise))
 
+@main.get('/workouts/<name>/get_gif_url')
+def get_gif_url(name):
+    url = Exercise.get_gif_url(name)
+    if url:
+        return jsonify({'gifURL' : url})
+    else :
+        return jsonify({'error' : 'Exercise not found'})
 
 # @main.route('/recipes', methods=['GET'])
 # def get_recipes():

@@ -23,6 +23,14 @@ class Exercise(Document):
     
     def get_exercises(self):
         return Exercise.objects()
+    
+    def get_gif_url(exercise_name):
+        cleared_exercise_name = exercise_name.replace('_',' ')
+        exercise = Exercise.objects(name=cleared_exercise_name).first()
+        if exercise:
+            return exercise.gifURL
+        else: 
+            return None
 
 class Workout(Document):
     workout_name = StringField(required=True)

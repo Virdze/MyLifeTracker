@@ -30,3 +30,23 @@ body {
     height: 40px;
     border-radius: 50%;
 }
+
+/* Centered container */
+.centered-container {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333; /* Same as sidebar background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+  }
+
+#workoutsContainer {
+    z-index: -5;
+    position: relative;
+    top : 467cm;
+
+
+}

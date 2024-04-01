@@ -9,7 +9,6 @@
             const target = event.target.getAttribute('href');
             document.querySelectorAll('.content > div').forEach(function(contentDiv) {
                 console.log(target)
-
               contentDiv.style.display = 'none';
             });
             userContent.style.display = 'none'; // Hide user content when any nav link is clicked
