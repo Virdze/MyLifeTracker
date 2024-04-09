@@ -33,20 +33,17 @@ body {
 
 /* Centered container */
 .centered-container {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: #333; /* Same as sidebar background */
     padding: 20px;
     border-radius: 10px;
-    width: 95%;
-  }
+    width: 200%; /* Adjust width as needed */
+    max-width: 800px; /* Limit maximum width for better readability */
+    margin: 0 auto; /* Center the centered-container horizontally */
+}
 
-#workoutsContainer {
-    z-index: -5;
-    position: relative;
-    top : 467cm;
-
-
+  #workoutsContainer {
+    max-height: calc(100vh - 100px); /* Adjust as needed */
+    overflow-y: auto;
+    margin: 0 auto; /* Center the workouts container horizontally */
+    width: 90%; /* Adjust width as needed */
 }

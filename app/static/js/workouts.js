@@ -20,26 +20,33 @@
             var row = document.createElement("div")
             row.className = "row";
             
-            var col = document.createElement("div");
-            col.className = "col-md-10";
+                var leftdiv = document.createElement("div");
+                leftdiv.className = "col-md-8";
 
-            var heading = document.createElement("h3");
-            heading.textContent = exercise.name;
+                    var heading = document.createElement("h3");
+                    heading.textContent = exercise.name;
 
-            var description = document.createElement("p");
-            description.textContent = exercise.instructions;
+                    var description = document.createElement("p");
+                    description.textContent = exercise.instructions;
 
-            col.appendChild(heading);
-            col.appendChild(description);
-            row.appendChild(col);
+                    leftdiv.appendChild(heading);
+                    leftdiv.appendChild(description);
+            
+                var rightdiv = document.createElement("div");
+                rightdiv.className = "col-md-4";
+
+                    var gifurl = document.createElement("img");
+                    gifurl.src = exercise.gifURL;
+
+                    rightdiv.appendChild(gifurl);
+
+            row.appendChild(leftdiv);
+            row.appendChild(rightdiv);
 
             return row;
         }
 
-        function show_exercises(){
-            
-
-            
+        function show_exercises(){            
                 fetch('http://127.0.0.1:5000/workouts/getExercises')
                     .then(response => response.json())
                     .then(data => {
@@ -58,6 +65,7 @@
                     });
             
         }
+        
         document.querySelector('a[href="#workouts"]').addEventListener('click', function() {
             show_exercises();
         });
