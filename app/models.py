@@ -1,6 +1,7 @@
 from mongoengine import Document, StringField, IntField, FloatField, DateTimeField, ListField, ReferenceField, DictField
 
 class Exercise(Document):
+    api_id = StringField(required=True)
     name = StringField(required=True)
     instructions = ListField(StringField(required=True))
     bodyPart = StringField(required=True)
@@ -11,6 +12,7 @@ class Exercise(Document):
     def save_exercises(self, exercises_json):
         for exercise in exercises_json:
             exercise = Exercise(
+                api_id = exercise['id'],
                 name=exercise['name'],
                 instructions=exercise['instructions'],
                 bodyPart=exercise['bodyPart'],
