@@ -1,19 +1,24 @@
 {   
     document.addEventListener('DOMContentLoaded', function() {
         // Fetch GIF URL when "Workouts" tab is clicked
-        function get_gif_url() {
-            const exercise_name = 'archer_pull_up'
-        
-            document.querySelector('a[href="#workouts"]').addEventListener('click', function() {
-              fetch('http://127.0.0.1:5000/workouts/archer_pull_up/get_gif_url') // Assuming the Flask route is '/get_gif_url'
+        function get_gif_url(exercise_name) {
+            
+              fetch(`http://127.0.0.1:5000/workouts/${exercise_name}/get_gif_url`) // Assuming the Flask route is '/get_gif_url'
                 .then(response => response.json())
                 .then(data => {
                   const gifUrl = data.gifURL;
                   console.log('GIF URL',data);
-                  document.getElementById('workout-gif').src = gifUrl;
+                  fetch(gifURL).then(response => response.json())
+                    .then(blob => {
+                        const objectURL = URL.createObjectURL(blob);
+                        return objectURL;
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
                 })
                 .catch(error => console.error('Error:', error));
-            });
+            
         }
 
         function create_exercise_row(exercise) {
@@ -36,7 +41,7 @@
                 rightdiv.className = "col-md-4";
 
                     var gifurl = document.createElement("img");
-                    gifurl.src = exercise.gifURL;
+                    gifurl.src = get_gif_url(exercise.name);
 
                     rightdiv.appendChild(gifurl);
 
