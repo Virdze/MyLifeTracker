@@ -1,21 +1,40 @@
 {   
     document.addEventListener('DOMContentLoaded', function() {
+        /* CODE TO CALL API AND GET EXERCISES
+        fetch('http://127.0.0.1:5000/callExercisesAPI') // Retrieve and Save exercises'
+            .then(response => response.json())
+            .then(data => {
+              
+              console.log('Data was saved successfully');
+              
+            })
+            .catch(error => console.error('Error:', error));
+        */
         // Fetch GIF URL when "Workouts" tab is clicked
         function get_gif_url(exercise_name) {
-            
-              fetch(`http://127.0.0.1:5000/workouts/${exercise_name}/get_gif_url`) // Assuming the Flask route is '/get_gif_url'
+            var cleared_exercise_name = exercise_name.replace(' ','_')
+              fetch(`http://127.0.0.1:5000/workouts/${cleared_exercise_name}/get_gif_url`) // Assuming the Flask route is '/get_gif_url'
                 .then(response => response.json())
                 .then(data => {
                   const gifUrl = data.gifURL;
-                  console.log('GIF URL',data);
-                  fetch(gifURL).then(response => response.json())
+                  console.log('GIF URL',data.gifURL);
+                  return gifUrl;
+                  /*
+                  fetch(gifUrl, { 
+                    headers: { 'X-RapidAPI-Key' : 'c8f7c942c6msh71c58f5865ee5c7p188819jsn6bb86afec4f2',
+                               'X-RapidAPI-Host' : 'exercisedb.p.rapidapi.com',
+                               
+                            }, 
+                    mode: 'no-cors'
+                  })
+                    .then(response => response.blob())
                     .then(blob => {
                         const objectURL = URL.createObjectURL(blob);
                         return objectURL;
                     })
                     .catch(error => {
                         console.error('There was a problem with the fetch operation:', error);
-                    });
+                    });*/
                 })
                 .catch(error => console.error('Error:', error));
             
