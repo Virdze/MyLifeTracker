@@ -59,10 +59,10 @@
                 var rightdiv = document.createElement("div");
                 rightdiv.className = "col-md-4";
 
-                    var gifurl = document.createElement("img");
-                    gifurl.src = get_gif_url(exercise.name);
+                    //var gifurl = document.createElement("img");
+                    //gifurl.src = get_gif_url(exercise.name);
 
-                    rightdiv.appendChild(gifurl);
+                    //rightdiv.appendChild(gifurl);
 
             row.appendChild(leftdiv);
             row.appendChild(rightdiv);
@@ -86,7 +86,8 @@
                             var exerciseRow = create_exercise_row(exercise);
                             workoutsContainer.appendChild(exerciseRow);
                         });
-                    });
+                    })
+                    .catch(error => console.error('Error: ', error));
             
         }
         

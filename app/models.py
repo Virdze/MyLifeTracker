@@ -23,7 +23,7 @@ class Exercise(Document):
             exercise.save()
         return True
     
-    def get_exercises(self):
+    def get_exercises():
         return Exercise.objects()
     
     def get_gif_url(exercise_name):

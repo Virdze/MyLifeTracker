@@ -37,7 +37,7 @@ def callExercisesAPI():
     
 @main.get("/workouts/getExercises")
 def get_exercises():
-    return jsonify(Exercise.get_exercises(Exercise))
+    return jsonify(Exercise.get_exercises())
 
 @main.get('/workouts/<name>/get_gif_url')
 def get_gif_url(name):
