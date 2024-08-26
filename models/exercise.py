@@ -1,5 +1,4 @@
-from mongoengine import Document, StringField, IntField, FloatField, DateTimeField, ListField, ReferenceField, DictField
-
+from mongoengine import Document, StringField, ListField
 class Exercise(Document):
     api_id = StringField(required=True)
     name = StringField(required=True)
@@ -33,36 +32,3 @@ class Exercise(Document):
             return exercise.gifURL
         else: 
             return None
-
-
-"""
-
-class MacroNutrients(Document):
-    protein = FloatField(required=True)
-    carbohydrates = FloatField(required=True) 
-    fats = FloatField(required=True)
-
-class MicroNutrients(Document):
-    vitamins = DictField(required=True)
-    calcium = FloatField(required=True) 
-    chloride = FloatField(required=True) 
-    magnesium = FloatField(required=True) 
-    phosphorus = FloatField(required=True) 
-    potassium = FloatField(required=True) 
-    sodium = FloatField(required=True)
-
-class Ingredient(Document):
-    name = StringField(required=True)
-    weight  = FloatField(required=True)
-    quantity = IntField(required=True)
-    macros = ReferenceField(MacroNutrients)
-    micros = ReferenceField(MicroNutrients)
-
-class Recipe(Document):
-    title = StringField(required=True)
-    description = StringField(required=True)
-    cooking_time = StringField(required=True)
-    serving_size = IntField(required=True)
-    ingredients = ListField(ReferenceField(Ingredient))
-    
-"""
