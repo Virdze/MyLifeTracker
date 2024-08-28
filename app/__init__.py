@@ -18,7 +18,8 @@ def create_app(config_name='development'):
     db.init_app(app)
 
     # Register blueprints
-    from .routes import main as main_blueprint
+    from app.routes.main_routes import main as main_blueprint
+    from app.routes.exercise_routes import exercise as exercise_blueprint
     app.register_blueprint(main_blueprint)
-
+    app.register_blueprint(exercise_blueprint)
     return app
