@@ -13,11 +13,14 @@
         // Fetch GIF URL when "Workouts" tab is clicked
         function get_gif_url(exercise_name) {
             var cleared_exercise_name = exercise_name.replace(' ','_')
-              fetch(`http://127.0.0.1:5000/workouts/${cleared_exercise_name}/get_gif_url`) // Assuming the Flask route is '/get_gif_url'
-                .then(response => response.json())
+              fetch("http://127.0.0.1:5000/workouts/get_gif_url/${exercise_name}")
                 .then(data => {
-                  const gifUrl = data.gifURL;
-                  console.log('GIF URL',data.gifURL);
+                  const exercise_id = data.api_id;
+                  console.log('GIF URL',data.api_id);
+
+                  if (exercise_id !== null){
+                    fetch("http
+                  }
                   return gifUrl;
                   /*
                   fetch(gifUrl, { 
@@ -59,8 +62,8 @@
                 var rightdiv = document.createElement("div");
                 rightdiv.className = "col-md-4";
 
-                    //var gifurl = document.createElement("img");
-                    //gifurl.src = get_gif_url(exercise.name);
+                    var gifurl = document.createElement("img");
+                    gifurl.src = get_gif_url(exercise.name);
 
                     //rightdiv.appendChild(gifurl);
 

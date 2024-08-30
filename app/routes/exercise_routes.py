@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 import requests
 from app.models.exercise import Exercise
+from app.controllers.exercise_controller import ExerciseController
 
 exercise = Blueprint('exercise', __name__)
 
@@ -28,20 +29,12 @@ def callExercisesAPI():
             })
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'An error occurred: {}'.format(e)}), 500    
-
-
-#@exercise.route('get_gif_url', methods=['GET'])
-#def get_gif_url(id):
-#    return jsonify(Exercise.get_gif_url(id))
     
 @exercise.get("/workouts/getExercises")
 def get_exercises():
     return jsonify(Exercise.get_exercises())
 
-@exercise.get('/workouts/<name>/get_gif_url')
-def get_gif_url(name):
-    url = Exercise.get_gif_url(name)
-    if url:
-        return jsonify({'gifURL' : url})
-    else :
-        return jsonify({'error' : 'Exercise not found'})
+@exercise.get('/workouts/get_gif_url/<name>')
+def get_gif_url(exercise_name):
+    return Exercise.get_gif_url(exercise_name)
+    

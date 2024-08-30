@@ -25,10 +25,9 @@ class Exercise(Document):
     def get_exercises():
         return Exercise.objects()
     
-    def get_gif_url(exercise_name):
-        cleared_exercise_name = exercise_name.replace('_',' ')
-        exercise = Exercise.objects(name=cleared_exercise_name).first()
-        if exercise:
-            return exercise.gifURL
-        else: 
-            return None
+    def get_exercise_by_id(id):
+        return Exercise.objects(id=id)
+    
+    def get_exercise_by_name(name):
+        return Exercise.objects(name=name)
+    
