@@ -1,2 +1,2 @@
 # MyLifeTracker
-App for Workouts, Nutrition and Recipes.
+App to plan my Workouts, Nutrition and Recipes.
