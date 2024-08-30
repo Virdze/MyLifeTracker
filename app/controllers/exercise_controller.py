@@ -1,10 +1,13 @@
-from models.exercise import Exercise
-import requests#
+from app.models.exercise import Exercise
+import requests
 from flask import jsonify
 class ExerciseController:
 
     def get_gif_url(exercise_name):
-        exercise_id = Exercise.get_exercise_by_name(exercise_name).api_id
+        exercise_name_spaced = exercise_name.replace('_', ' ')
+        print(exercise_name_spaced)
+        exercise_id = Exercise.get_exercise_by_name(exercise_name_spaced).api_id
+        print(exercise_id)
         
         if exercise_id:
             api_url = f'https://exercisedb.p.rapidapi.com/exercises/exercise/{exercise_id}'
@@ -19,7 +22,7 @@ class ExerciseController:
 
                 if response.status_code == 200:
                     
-                    return jsonify(response.gifUrl)
+                    return jsonify({'gifUrl': response.json().get('gifUrl')})
                 else:
                     return jsonify({
                         'errorCode': response.status_code,

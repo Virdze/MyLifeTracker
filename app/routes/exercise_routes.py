@@ -35,6 +35,6 @@ def get_exercises():
     return jsonify(Exercise.get_exercises())
 
 @exercise.get('/workouts/get_gif_url/<name>')
-def get_gif_url(exercise_name):
-    return Exercise.get_gif_url(exercise_name)
+def get_gif_url(name):
+    return ExerciseController.get_gif_url(name)
     

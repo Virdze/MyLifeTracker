@@ -26,8 +26,8 @@ class Exercise(Document):
         return Exercise.objects()
     
     def get_exercise_by_id(id):
-        return Exercise.objects(id=id)
+        return Exercise.objects(id=id).first()
     
     def get_exercise_by_name(name):
-        return Exercise.objects(name=name)
+        return Exercise.objects(name=name).first()
     

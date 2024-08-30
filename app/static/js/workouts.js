@@ -12,35 +12,18 @@
         */
         // Fetch GIF URL when "Workouts" tab is clicked
         function get_gif_url(exercise_name) {
-            var cleared_exercise_name = exercise_name.replace(' ','_')
-              fetch("http://127.0.0.1:5000/workouts/get_gif_url/${exercise_name}")
-                .then(data => {
-                  const exercise_id = data.api_id;
-                  console.log('GIF URL',data.api_id);
-
-                  if (exercise_id !== null){
-                    fetch("http
-                  }
-                  return gifUrl;
-                  /*
-                  fetch(gifUrl, { 
-                    headers: { 'X-RapidAPI-Key' : 'c8f7c942c6msh71c58f5865ee5c7p188819jsn6bb86afec4f2',
-                               'X-RapidAPI-Host' : 'exercisedb.p.rapidapi.com',
-                               
-                            }, 
-                    mode: 'no-cors'
-                  })
-                    .then(response => response.blob())
-                    .then(blob => {
-                        const objectURL = URL.createObjectURL(blob);
-                        return objectURL;
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                    });*/
-                })
-                .catch(error => console.error('Error:', error));
-            
+            var normalized_name = exercise_name.replaceAll(' ','_');
+            console.log('Normalized: ' + normalized_name);
+            fetch(`http://127.0.0.1:5000/workouts/get_gif_url/${exercise_name}`)
+              .then(data => {
+                const gifUrl = data.gifUrl;
+                console.log('GIF URL',data.gifUrl);
+                if (gifUrl !== null){
+                  
+                }
+                return gifUrl;
+              })
+              .catch(error => console.error('Error:', error));
         }
 
         function create_exercise_row(exercise) {
@@ -65,7 +48,7 @@
                     var gifurl = document.createElement("img");
                     gifurl.src = get_gif_url(exercise.name);
 
-                    //rightdiv.appendChild(gifurl);
+                    rightdiv.appendChild(gifurl);
 
             row.appendChild(leftdiv);
             row.appendChild(rightdiv);
